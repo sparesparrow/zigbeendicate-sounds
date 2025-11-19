@@ -1,0 +1,8 @@
+# udev rule to start gamepad light controller service when gamepad is connected
+# Supports both shanwan X-D GamePad (2563:0575) and Android GamePad (2563:0526)
+
+# shanwan X-D GamePad
+SUBSYSTEM=="input", ATTRS{idVendor}=="2563", ATTRS{idProduct}=="0575", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+
+# shanwan Android GamePad
+SUBSYSTEM=="input", ATTRS{idVendor}=="2563", ATTRS{idProduct}=="0526", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"

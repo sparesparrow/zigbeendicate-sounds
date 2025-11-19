@@ -1,0 +1,139 @@
+{
+  "presets": [
+    {
+      "name": "Classic",
+      "description": "Original chord-based colors from music analysis",
+      "colors": {
+        "E": {"hue": 240, "saturation": 100, "name": "blue"},
+        "D": {"hue": 0, "saturation": 100, "name": "red"},
+        "G": {"hue": 120, "saturation": 100, "name": "green"},
+        "A": {"hue": 60, "saturation": 100, "name": "yellow"}
+      },
+      "default_brightness": 200,
+      "transition": 0.5
+    },
+    {
+      "name": "Psychedelic",
+      "description": "Intense rainbow cycling with high saturation",
+      "colors": {
+        "E": {"hue": 300, "saturation": 100, "name": "magenta"},
+        "D": {"hue": 30, "saturation": 100, "name": "orange"},
+        "G": {"hue": 180, "saturation": 100, "name": "cyan"},
+        "A": {"hue": 270, "saturation": 100, "name": "purple"}
+      },
+      "default_brightness": 254,
+      "transition": 0.1
+    },
+    {
+      "name": "Warm",
+      "description": "Warm colors - reds, oranges, yellows",
+      "colors": {
+        "E": {"hue": 0, "saturation": 100, "name": "red"},
+        "D": {"hue": 15, "saturation": 100, "name": "red-orange"},
+        "G": {"hue": 30, "saturation": 100, "name": "orange"},
+        "A": {"hue": 45, "saturation": 100, "name": "golden"}
+      },
+      "default_brightness": 180,
+      "transition": 0.8
+    },
+    {
+      "name": "Cool",
+      "description": "Cool colors - blues, purples, cyans",
+      "colors": {
+        "E": {"hue": 240, "saturation": 100, "name": "blue"},
+        "D": {"hue": 270, "saturation": 100, "name": "purple"},
+        "G": {"hue": 180, "saturation": 100, "name": "cyan"},
+        "A": {"hue": 210, "saturation": 100, "name": "sky-blue"}
+      },
+      "default_brightness": 180,
+      "transition": 0.8
+    },
+    {
+      "name": "Pastel",
+      "description": "Soft pastel colors with low saturation",
+      "colors": {
+        "E": {"hue": 240, "saturation": 40, "name": "pastel-blue"},
+        "D": {"hue": 0, "saturation": 40, "name": "pastel-red"},
+        "G": {"hue": 120, "saturation": 40, "name": "pastel-green"},
+        "A": {"hue": 60, "saturation": 40, "name": "pastel-yellow"}
+      },
+      "default_brightness": 160,
+      "transition": 1.0
+    },
+    {
+      "name": "Rainbow",
+      "description": "Full spectrum rainbow cycle",
+      "colors": {
+        "E": {"hue": 0, "saturation": 100, "name": "red"},
+        "D": {"hue": 90, "saturation": 100, "name": "lime"},
+        "G": {"hue": 180, "saturation": 100, "name": "cyan"},
+        "A": {"hue": 270, "saturation": 100, "name": "purple"}
+      },
+      "default_brightness": 220,
+      "transition": 0.3
+    },
+    {
+      "name": "Fire",
+      "description": "Fire and flame colors",
+      "colors": {
+        "E": {"hue": 0, "saturation": 100, "name": "red"},
+        "D": {"hue": 20, "saturation": 100, "name": "flame-orange"},
+        "G": {"hue": 40, "saturation": 100, "name": "orange-yellow"},
+        "A": {"hue": 60, "saturation": 100, "name": "yellow"}
+      },
+      "default_brightness": 254,
+      "transition": 0.2
+    },
+    {
+      "name": "Ocean",
+      "description": "Ocean depths - blues and greens",
+      "colors": {
+        "E": {"hue": 200, "saturation": 100, "name": "deep-blue"},
+        "D": {"hue": 180, "saturation": 80, "name": "cyan"},
+        "G": {"hue": 160, "saturation": 80, "name": "teal"},
+        "A": {"hue": 140, "saturation": 60, "name": "sea-green"}
+      },
+      "default_brightness": 150,
+      "transition": 1.5
+    },
+    {
+      "name": "Monochrome",
+      "description": "White light only, varying brightness",
+      "colors": {
+        "E": {"hue": 0, "saturation": 0, "name": "white"},
+        "D": {"hue": 0, "saturation": 0, "name": "white"},
+        "G": {"hue": 0, "saturation": 0, "name": "white"},
+        "A": {"hue": 0, "saturation": 0, "name": "white"}
+      },
+      "default_brightness": 200,
+      "transition": 0.5
+    },
+    {
+      "name": "Party",
+      "description": "Random vibrant colors for party mode",
+      "colors": {
+        "E": {"hue": 330, "saturation": 100, "name": "hot-pink"},
+        "D": {"hue": 90, "saturation": 100, "name": "lime-green"},
+        "G": {"hue": 60, "saturation": 100, "name": "yellow"},
+        "A": {"hue": 280, "saturation": 100, "name": "violet"}
+      },
+      "default_brightness": 254,
+      "transition": 0.05
+    }
+  ],
+
+  "direct_colors": {
+    "red": {"hue": 0, "saturation": 100, "brightness": 200},
+    "orange": {"hue": 30, "saturation": 100, "brightness": 200},
+    "yellow": {"hue": 60, "saturation": 100, "brightness": 200},
+    "lime": {"hue": 90, "saturation": 100, "brightness": 200},
+    "green": {"hue": 120, "saturation": 100, "brightness": 200},
+    "cyan": {"hue": 180, "saturation": 100, "brightness": 200},
+    "blue": {"hue": 240, "saturation": 100, "brightness": 200},
+    "purple": {"hue": 270, "saturation": 100, "brightness": 200},
+    "magenta": {"hue": 300, "saturation": 100, "brightness": 200},
+    "pink": {"hue": 330, "saturation": 100, "brightness": 200},
+    "white": {"hue": 0, "saturation": 0, "brightness": 254},
+    "warm_white": {"hue": 40, "saturation": 20, "brightness": 254}
+  }
+}

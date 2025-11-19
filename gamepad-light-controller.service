@@ -1,0 +1,26 @@
+[Unit]
+Description=Gamepad Light Controller (shanwan gamepad → Zigbee lights)
+After=network.target mosquitto.service zigbee2mqtt.service
+Requires=mosquitto.service
+Wants=zigbee2mqtt.service
+
+[Service]
+Type=simple
+User=sparrow
+Group=sparrow
+WorkingDirectory=/media/sparrow/data/Documents/SLOTA/MS
+ExecStart=/media/sparrow/data/Documents/SLOTA/MS/venv/bin/python3 /media/sparrow/data/Documents/SLOTA/MS/gamepad_light_controller.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Input device access
+SupplementaryGroups=input
+
+# Environment
+Environment=PYTHONPATH=/media/sparrow/data/Documents/SLOTA/MS
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+[Install]
+WantedBy=multi-user.target

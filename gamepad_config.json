@@ -1,0 +1,206 @@
+{
+  "devices": [
+    {
+      "name": "shanwan X-D GamePad",
+      "path": "/dev/input/event28",
+      "fallback_path": "/dev/input/js0",
+      "vendor_id": "2563",
+      "product_id": "0575",
+      "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+      "symlink": "/dev/input/by-id/usb-shanwan_X-D_GamePad-joystick"
+    },
+    {
+      "name": "shanwan Android GamePad",
+      "path": "/dev/input/event28",
+      "fallback_path": "/dev/input/js0",
+      "vendor_id": "2563",
+      "product_id": "0526",
+      "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+      "symlink": "/dev/input/by-id/usb-shanwan_Android_GamePad-joystick"
+    }
+  ],
+  "device": {
+    "name": "shanwan X-D GamePad",
+    "path": "/dev/input/event28",
+    "fallback_path": "/dev/input/js0",
+    "vendor_id": "2563",
+    "product_id": "0575",
+    "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+    "symlink": "/dev/input/by-id/usb-shanwan_X-D_GamePad-joystick"
+  },
+
+  "button_mappings": {
+    "304": {
+      "name": "A (Cross)",
+      "action": "set_direct_color",
+      "color": "red",
+      "description": "Set all lights to red"
+    },
+    "305": {
+      "name": "B (Circle)",
+      "action": "set_direct_color",
+      "color": "blue",
+      "description": "Set all lights to blue"
+    },
+    "307": {
+      "name": "X (Square)",
+      "action": "set_direct_color",
+      "color": "green",
+      "description": "Set all lights to green"
+    },
+    "308": {
+      "name": "Y (Triangle)",
+      "action": "set_direct_color",
+      "color": "yellow",
+      "description": "Set all lights to yellow"
+    },
+    "310": {
+      "name": "L1",
+      "action": "previous_preset",
+      "description": "Cycle to previous color preset"
+    },
+    "311": {
+      "name": "R1",
+      "action": "next_preset",
+      "description": "Cycle to next color preset"
+    },
+    "312": {
+      "name": "L2",
+      "action": "decrease_effect_speed",
+      "description": "Slower transitions (increase transition time)"
+    },
+    "313": {
+      "name": "R2",
+      "action": "increase_effect_speed",
+      "description": "Faster transitions (decrease transition time)"
+    },
+    "314": {
+      "name": "Select/Back",
+      "action": "reset_to_white",
+      "description": "Reset all lights to warm white"
+    },
+    "315": {
+      "name": "Start",
+      "action": "toggle_lights",
+      "description": "Toggle all lights on/off"
+    },
+    "316": {
+      "name": "Home/Guide",
+      "action": "quit",
+      "description": "Exit gamepad controller"
+    },
+    "317": {
+      "name": "L3 (Left Stick Press)",
+      "action": "toggle_strobe_mode",
+      "description": "Toggle fast strobe effect"
+    },
+    "318": {
+      "name": "R3 (Right Stick Press)",
+      "action": "rainbow_cycle",
+      "description": "Start rainbow cycling effect"
+    }
+  },
+
+  "dpad_mappings": {
+    "ABS_HAT0Y": {
+      "-1": {
+        "name": "D-Pad Up",
+        "action": "increase_brightness",
+        "amount": 25,
+        "description": "Increase brightness by 25"
+      },
+      "1": {
+        "name": "D-Pad Down",
+        "action": "decrease_brightness",
+        "amount": 25,
+        "description": "Decrease brightness by 25"
+      }
+    },
+    "ABS_HAT0X": {
+      "-1": {
+        "name": "D-Pad Left",
+        "action": "set_brightness",
+        "value": 50,
+        "description": "Set brightness to dim (50)"
+      },
+      "1": {
+        "name": "D-Pad Right",
+        "action": "set_brightness",
+        "value": 254,
+        "description": "Set brightness to max (254)"
+      }
+    }
+  },
+
+  "analog_stick_mappings": {
+    "left_stick": {
+      "x_axis": "ABS_X",
+      "y_axis": "ABS_Y",
+      "actions": {
+        "x": {
+          "action": "adjust_hue",
+          "range": [0, 255],
+          "output_range": [0, 360],
+          "description": "Rotate hue (0-360 degrees)"
+        },
+        "y": {
+          "action": "adjust_saturation",
+          "range": [0, 255],
+          "output_range": [100, 0],
+          "description": "Adjust saturation (inverted Y-axis)"
+        }
+      }
+    },
+    "right_stick": {
+      "x_axis": "ABS_RX",
+      "y_axis": "ABS_RY",
+      "actions": {
+        "x": {
+          "action": "adjust_transition_speed",
+          "range": [0, 255],
+          "output_range": [0.0, 2.0],
+          "description": "Adjust transition speed (0-2 seconds)"
+        },
+        "y": {
+          "action": "adjust_brightness",
+          "range": [0, 255],
+          "output_range": [254, 0],
+          "description": "Adjust brightness (inverted Y-axis)"
+        }
+      }
+    }
+  },
+
+  "behavior": {
+    "analog_deadzone": 20,
+    "analog_update_throttle_ms": 100,
+    "button_debounce_ms": 50,
+    "lights_all_or_individual": "all",
+    "default_transition": 0.5,
+    "rainbow_cycle_speed": 2.0,
+    "strobe_speed": 0.1
+  },
+
+  "presets": {
+    "cycle_order": [
+      "Classic",
+      "Psychedelic",
+      "Warm",
+      "Cool",
+      "Pastel",
+      "Rainbow",
+      "Fire",
+      "Ocean",
+      "Party"
+    ],
+    "default_preset": "Classic"
+  },
+
+  "help_text": {
+    "face_buttons": "A=Red, B=Blue, X=Green, Y=Yellow",
+    "shoulders": "L1/R1=Cycle Presets, L2/R2=Adjust Speed",
+    "dpad": "Up/Down=Brightness ±25, Left=Dim, Right=Bright",
+    "sticks": "Left=Hue/Sat, Right=Bright/Transition",
+    "special": "Start=Toggle On/Off, Select=White, Home=Quit"
+  }
+}
