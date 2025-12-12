@@ -1,8 +1,19 @@
 # udev rule to start gamepad light controller service when gamepad is connected
-# Supports both shanwan X-D GamePad (2563:0575) and Android GamePad (2563:0526)
+# Supports USB gamepads (shanwan) and Bluetooth HID gamepads
 
+# USB gamepads
 # shanwan X-D GamePad
 SUBSYSTEM=="input", ATTRS{idVendor}=="2563", ATTRS{idProduct}=="0575", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
 
 # shanwan Android GamePad
 SUBSYSTEM=="input", ATTRS{idVendor}=="2563", ATTRS{idProduct}=="0526", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+
+# Bluetooth HID gamepads (Wireless Controllers)
+# Sony DualShock 4 / PlayStation controllers
+SUBSYSTEM=="input", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="09cc", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+SUBSYSTEM=="input", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0ba0", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+
+# Generic Bluetooth HID devices (fallback for other controllers)
+SUBSYSTEM=="input", KERNEL=="event*", ATTR{name}=="*Wireless Controller*", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+SUBSYSTEM=="input", KERNEL=="event*", ATTR{name}=="*DualShock*", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"
+SUBSYSTEM=="input", KERNEL=="event*", ATTR{name}=="*PLAYSTATION*", TAG+="systemd", ENV{SYSTEMD_WANTS}="gamepad-light-controller.service"

@@ -83,12 +83,27 @@ class GamepadLightController:
                     device = InputDevice(device_info['path'])
                     # Verify it matches by checking name or vendor/product ID
                     device_name_lower = device.name.lower()
-                    if (device_info['name'].lower() in device_name_lower or 
-                        'shanwan' in device_name_lower):
+                    device_matches = False
+
+                    # Check name matches
+                    if device_info['name'].lower() in device_name_lower:
+                        device_matches = True
+                    # Check for common gamepad keywords
+                    elif any(keyword in device_name_lower for keyword in ['wireless', 'controller', 'gamepad', 'shanwan', 'playstation', 'dualshock', 'xbox']):
+                        device_matches = True
+                    # Check vendor/product ID if available
+                    elif ('vendor_id' in device_info and 'product_id' in device_info and
+                          f"{device.info.vendor:04x}" == device_info['vendor_id'].lower() and
+                          f"{device.info.product:04x}" == device_info['product_id'].lower()):
+                        device_matches = True
+
+                    if device_matches:
                         self.gamepad = device
                         print(f"✓ Gamepad connected: {self.gamepad.name}")
-                        print(f"  Device: {device_info['name']} ({device_info['vendor_id']}:{device_info['product_id']})")
+                        print(f"  Device: {device_info['name']} ({device_info.get('vendor_id', 'N/A')}:{device_info.get('product_id', 'N/A')})")
                         print(f"  Path: {device_info['path']}")
+                        if 'type' in device_info:
+                            print(f"  Type: {device_info['type']}")
                         return
                 except (FileNotFoundError, OSError):
                     pass
@@ -98,12 +113,27 @@ class GamepadLightController:
                     try:
                         device = InputDevice(device_info['fallback_path'])
                         device_name_lower = device.name.lower()
-                        if (device_info['name'].lower() in device_name_lower or 
-                            'shanwan' in device_name_lower):
+                        device_matches = False
+
+                        # Check name matches
+                        if device_info['name'].lower() in device_name_lower:
+                            device_matches = True
+                        # Check for common gamepad keywords
+                        elif any(keyword in device_name_lower for keyword in ['wireless', 'controller', 'gamepad', 'shanwan', 'playstation', 'dualshock', 'xbox']):
+                            device_matches = True
+                        # Check vendor/product ID if available
+                        elif ('vendor_id' in device_info and 'product_id' in device_info and
+                              f"{device.info.vendor:04x}" == device_info['vendor_id'].lower() and
+                              f"{device.info.product:04x}" == device_info['product_id'].lower()):
+                            device_matches = True
+
+                        if device_matches:
                             self.gamepad = device
                             print(f"✓ Gamepad connected: {self.gamepad.name}")
-                            print(f"  Device: {device_info['name']} ({device_info['vendor_id']}:{device_info['product_id']})")
+                            print(f"  Device: {device_info['name']} ({device_info.get('vendor_id', 'N/A')}:{device_info.get('product_id', 'N/A')})")
                             print(f"  Path: {device_info['fallback_path']}")
+                            if 'type' in device_info:
+                                print(f"  Type: {device_info['type']}")
                             return
                     except (FileNotFoundError, OSError):
                         pass
@@ -125,9 +155,18 @@ class GamepadLightController:
         for event_path in glob.glob('/dev/input/event*'):
             try:
                 device = InputDevice(event_path)
-                if 'gamepad' in device.name.lower() or 'shanwan' in device.name.lower():
+                device_name_lower = device.name.lower()
+                # Check for various gamepad/controller names
+                if ('gamepad' in device_name_lower or
+                    'shanwan' in device_name_lower or
+                    'wireless' in device_name_lower or
+                    'controller' in device_name_lower or
+                    'playstation' in device_name_lower or
+                    'dualshock' in device_name_lower or
+                    'xbox' in device_name_lower):
                     self.gamepad = device
                     print(f"  ✓ Found gamepad at {event_path}: {device.name}")
+                    print(f"    Vendor: {device.info.vendor:04x}, Product: {device.info.product:04x}")
                     return
             except:
                 continue

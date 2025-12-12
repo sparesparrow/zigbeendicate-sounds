@@ -1,0 +1,86 @@
+# ShanWan X-D GamePad Button and Axis Mapping
+# Device: shanwan X-D GamePad
+# Vendor ID: 2563
+# Product ID: 0575
+# Test Date: 2025-11-19
+
+## Device Information
+Device Name: shanwan X-D GamePad
+USB ID: 2563:0575
+Device Path: /dev/input/js0
+Event Path: /dev/input/event28
+Symlink: /dev/input/by-id/usb-shanwan_X-D_GamePad-joystick
+
+## Axes (6 total)
+Axis 0: X (Left Stick X-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Left: -32767
+  - Right: 32767
+
+Axis 1: Y (Left Stick Y-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Up: -32767
+  - Down: 32767
+
+Axis 2: Z (Right Stick X-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Left: -32767
+  - Right: 32767
+
+Axis 3: Rz (Right Stick Y-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Up: -32767
+  - Down: 32767
+
+Axis 4: Hat0X (D-pad X-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Left: -32767
+  - Right: 32767
+
+Axis 5: Hat0Y (D-pad Y-axis)
+  - Range: -32767 to 32767
+  - Center: 0
+  - Up: -32767
+  - Down: 32767
+
+## Buttons (13 total)
+Button 0: BtnA (A button)
+Button 1: BtnB (B button)
+Button 2: BtnC (C button)
+Button 3: BtnX (X button)
+Button 4: BtnY (Y button)
+Button 5: BtnZ (Z button)
+Button 6: BtnTL (Left Trigger / L1)
+Button 7: BtnTR (Right Trigger / R1)
+Button 8: BtnTL2 (Left Trigger 2 / L2)
+Button 9: BtnTR2 (Right Trigger 2 / R2)
+Button 10: BtnSelect (Select button)
+Button 11: BtnStart (Start button)
+Button 12: BtnMode (Mode button)
+
+## Test Results Summary
+All buttons and axes were tested and confirmed working:
+- All 6 axes respond correctly to input
+- All 13 buttons register press events
+- Sticks return to center (0) when released
+- D-pad functions correctly on Hat0X and Hat0Y axes
+
+## Usage Notes
+- Use /dev/input/js0 for joystick interface
+- Use /dev/input/event28 for event interface
+- Use /dev/input/by-id/usb-shanwan_X-D_GamePad-joystick for persistent device access
+
+## Testing Commands
+# Test joystick:
+jstest /dev/input/js0
+
+# Test with evtest:
+evtest /dev/input/event28
+
+# Test with jstest-gtk (GUI):
+jstest-gtk

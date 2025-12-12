@@ -1,0 +1,148 @@
+{
+  "device": {
+    "name": "shanwan X-D GamePad",
+    "vendor_id": "2563",
+    "product_id": "0575",
+    "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+    "device_path": "/dev/input/js0",
+    "event_path": "/dev/input/event28",
+    "symlink": "/dev/input/by-id/usb-shanwan_X-D_GamePad-joystick"
+  },
+  "axes": {
+    "count": 6,
+    "mappings": [
+      {
+        "index": 0,
+        "name": "X",
+        "description": "Left Stick X-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      },
+      {
+        "index": 1,
+        "name": "Y",
+        "description": "Left Stick Y-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      },
+      {
+        "index": 2,
+        "name": "Z",
+        "description": "Right Stick X-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      },
+      {
+        "index": 3,
+        "name": "Rz",
+        "description": "Right Stick Y-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      },
+      {
+        "index": 4,
+        "name": "Hat0X",
+        "description": "D-pad X-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      },
+      {
+        "index": 5,
+        "name": "Hat0Y",
+        "description": "D-pad Y-axis",
+        "range": {
+          "min": -32767,
+          "max": 32767,
+          "center": 0
+        }
+      }
+    ]
+  },
+  "buttons": {
+    "count": 13,
+    "mappings": [
+      {
+        "index": 0,
+        "name": "BtnA",
+        "description": "A button"
+      },
+      {
+        "index": 1,
+        "name": "BtnB",
+        "description": "B button"
+      },
+      {
+        "index": 2,
+        "name": "BtnC",
+        "description": "C button"
+      },
+      {
+        "index": 3,
+        "name": "BtnX",
+        "description": "X button"
+      },
+      {
+        "index": 4,
+        "name": "BtnY",
+        "description": "Y button"
+      },
+      {
+        "index": 5,
+        "name": "BtnZ",
+        "description": "Z button"
+      },
+      {
+        "index": 6,
+        "name": "BtnTL",
+        "description": "Left Trigger / L1"
+      },
+      {
+        "index": 7,
+        "name": "BtnTR",
+        "description": "Right Trigger / R1"
+      },
+      {
+        "index": 8,
+        "name": "BtnTL2",
+        "description": "Left Trigger 2 / L2"
+      },
+      {
+        "index": 9,
+        "name": "BtnTR2",
+        "description": "Right Trigger 2 / R2"
+      },
+      {
+        "index": 10,
+        "name": "BtnSelect",
+        "description": "Select button"
+      },
+      {
+        "index": 11,
+        "name": "BtnStart",
+        "description": "Start button"
+      },
+      {
+        "index": 12,
+        "name": "BtnMode",
+        "description": "Mode button"
+      }
+    ]
+  },
+  "test_date": "2025-11-19",
+  "status": "All buttons and axes tested and confirmed working"
+}

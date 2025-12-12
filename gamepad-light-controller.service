@@ -1,25 +1,25 @@
 [Unit]
-Description=Gamepad Light Controller (shanwan gamepad → Zigbee lights)
-After=network.target mosquitto.service zigbee2mqtt.service
-Requires=mosquitto.service
+Description=Gamepad Light Controller (gamepad → Zigbee lights)
+After=network.target mosquitto.service zigbee2mqtt.service bluetooth.service
+Requires=mosquitto.service bluetooth.service
 Wants=zigbee2mqtt.service
 
 [Service]
 Type=simple
 User=sparrow
 Group=sparrow
-WorkingDirectory=/media/sparrow/data/Documents/SLOTA/MS
-ExecStart=/media/sparrow/data/Documents/SLOTA/MS/venv/bin/python3 /media/sparrow/data/Documents/SLOTA/MS/gamepad_light_controller.py
+WorkingDirectory=/home/sparrow/projects/zigbeendicate-sounds
+ExecStart=/home/sparrow/projects/zigbeendicate-sounds/venv/bin/python3 /home/sparrow/projects/zigbeendicate-sounds/gamepad_light_controller.py
 Restart=always
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
 
 # Input device access
-SupplementaryGroups=input
+SupplementaryGroups=input bluetooth
 
 # Environment
-Environment=PYTHONPATH=/media/sparrow/data/Documents/SLOTA/MS
+Environment=PYTHONPATH=/home/sparrow/projects/zigbeendicate-sounds
 Environment=PYTHONDONTWRITEBYTECODE=1
 
 [Install]

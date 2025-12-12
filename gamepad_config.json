@@ -1,12 +1,24 @@
 {
   "devices": [
     {
+      "name": "Wireless Controller",
+      "path": "/dev/input/event*",
+      "fallback_path": "/dev/input/js*",
+      "bluetooth_address": "E8:47:3A:03:2B:9A",
+      "vendor_id": "054C",
+      "product_id": "09CC",
+      "vendor_name": "Sony Interactive Entertainment",
+      "type": "bluetooth",
+      "symlink": "/dev/input/by-id/bluetooth-*Wireless_Controller*"
+    },
+    {
       "name": "shanwan X-D GamePad",
       "path": "/dev/input/event28",
       "fallback_path": "/dev/input/js0",
       "vendor_id": "2563",
       "product_id": "0575",
       "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+      "type": "usb",
       "symlink": "/dev/input/by-id/usb-shanwan_X-D_GamePad-joystick"
     },
     {
@@ -16,6 +28,7 @@
       "vendor_id": "2563",
       "product_id": "0526",
       "vendor_name": "ShenZhen ShanWan Technology Co., Ltd.",
+      "type": "usb",
       "symlink": "/dev/input/by-id/usb-shanwan_Android_GamePad-joystick"
     }
   ],
