@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run: Gamepad controller",
+      "type": "shell",
+      "command": "bash launch_gamepad.sh",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "Run: Audio reactive mode",
+      "type": "shell",
+      "command": "python audio_analyzer.py --list-devices && python audio_analyzer.py",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "Run: MCP server (stdio)",
+      "type": "shell",
+      "command": "python mcp_zigbee_server.py",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "Run: REST API server",
+      "type": "shell",
+      "command": "python api_server.py --reload",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "Monitor: MQTT messages",
+      "type": "shell",
+      "command": "mosquitto_sub -t 'zigbee2mqtt/#' -v",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "new" }
+    },
+    {
+      "label": "Test: All tests",
+      "type": "shell",
+      "command": "pytest tests/ -v --tb=short",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Test: Audio only (no hardware)",
+      "type": "shell",
+      "command": "pytest tests/test_audio.py tests/test_zigbee.py -v",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Lint: ruff",
+      "type": "shell",
+      "command": "ruff check . && echo 'All clean!'",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ]
+}
