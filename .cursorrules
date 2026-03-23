@@ -1,0 +1,74 @@
+# Cursor AI Rules — Zigbeendicate Sounds
+# These rules give Cursor context about the project so AI suggestions are accurate.
+
+## Project overview
+This is a Python 3.12 project that controls Zigbee smart lights via:
+1. A gamepad controller (IPEGA / DualShock 4 via evdev)
+2. An audio analyzer (real-time FFT beat detection)
+3. An MCP server (Claude Desktop / Claude Code integration)
+4. A REST/WebSocket API (FastAPI)
+
+All light commands ultimately go through `ZigbeeLightController` which publishes
+MQTT messages to a local Mosquitto broker → Zigbee2MQTT → Zigbee radio → bulbs.
+
+## Key files and their roles
+- `zigbee_light_controller.py`  — MQTT wrapper; the single source of truth for light commands
+- `gamepad_light_controller.py` — evdev event loop; maps button/axis events to light actions
+- `audio_analyzer.py`           — FFT analysis + BeatDetector + AudioLightMapper
+- `mcp_zigbee_server.py`        — MCP server exposing tools to Claude AI clients
+- `api_server.py`               — FastAPI REST + WebSocket API
+- `gamepad_config.json`         — button/axis mappings (do not hard-code button codes elsewhere)
+- `color_presets.json`          — 10 color preset definitions (HSV per preset)
+
+## MQTT payload schema (Zigbee2MQTT)
+Topic:   `zigbee2mqtt/{light_friendly_name}/set`
+Payload (JSON):
+```json
+{
+  "color": {
+    "hue": 0,          // 0–360 degrees
+    "saturation": 100  // 0–100 percent
+  },
+  "brightness": 200,   // 0–254
+  "transition": 0.5,   // seconds
+  "state": "ON",       // "ON" | "OFF" (optional)
+  "effect": "colorloop" // optional, see effect names below
+}
+```
+RGB variant: `"color": {"r": 255, "g": 0, "b": 0}` (mutually exclusive with hue/saturation)
+
+## Effect names (Zigbee2MQTT standard)
+colorloop, blink, breathe, okay, channel_change, candle_flicker, fireplace, random, none
+
+## Gamepad button codes (evdev)
+- 304 A/Cross, 305 B/Circle, 307 X/Square, 308 Y/Triangle
+- 310 L1, 311 R1, 312 L2, 313 R2
+- 314 Select/Share, 315 Start/Options, 316 Home/Guide
+- 317 L3 (left stick press), 318 R3 (right stick press)
+
+## Analog axis codes (evdev ABS_*)
+- ABS_X (0): left stick X, ABS_Y (1): left stick Y
+- ABS_RX (3): right stick X, ABS_RY (4): right stick Y
+- ABS_HAT0X (16): D-pad X, ABS_HAT0Y (17): D-pad Y
+- Value range: 0–255, center ≈ 128, deadzone ±20
+
+## Audio frequency bands
+- Bass:   60–250 Hz   → controls hue
+- Mid:   250–2000 Hz  → controls saturation
+- Treble:2000–8000 Hz → controls brightness
+
+## MCP tool naming convention
+Tool functions in `mcp_zigbee_server.py` use snake_case and accept `light_name="all"`
+to broadcast to every discovered light.
+
+## Testing
+Tests live in `tests/`. Run with `pytest tests/ -v`.
+All hardware (evdev, MQTT, PyAudio) is mocked — no physical devices needed for tests.
+Use `pytest-mock` and `unittest.mock.MagicMock` for mocking.
+
+## Code style
+- Python 3.12, type hints encouraged
+- Line length: 100 chars (ruff configured in pyproject.toml)
+- No bare `except:` — always catch specific exceptions
+- Prefer `Path` (pathlib) over `os.path`
+- Keep MQTT publish calls centralized in `ZigbeeLightController` — do not publish directly elsewhere
